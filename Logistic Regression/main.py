@@ -4,41 +4,41 @@ import pandas as pd
 
 # Importing the datasets
 
-datasets = pd.read_csv('Social_Network_Ads.csv')
+datasets = pd.read_csv('car_data.csv')
 X = datasets.iloc[:, [2,3]].values
 Y = datasets.iloc[:, 4].values
 
 # Splitting the dataset into the Training set and Test set
 
 from sklearn.model_selection import train_test_split
-X_Train, X_Test, Y_Train, Y_Test = train_test_split(X, Y, test_size = 0.25, random_state = 0)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.25, random_state = 0)
 
 # Feature Scaling
 
 from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
-X_Train = sc_X.fit_transform(X_Train)
-X_Test = sc_X.transform(X_Test)
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
 
 # Fitting the Logistic Regression into the Training set
 
 from sklearn.linear_model import LogisticRegression
 classifier = LogisticRegression(random_state = 0)
-classifier.fit(X_Train, Y_Train)
+classifier.fit(X_train, Y_train)
 
 # Predicting the test set results
 
-Y_Pred = classifier.predict(X_Test)
+Y_Pred = classifier.predict(X_test)
 
 # Making the Confusion Matrix 
 
 from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(Y_Test, Y_Pred)
+cm = confusion_matrix(Y_test, Y_Pred)
 
 # Visualising the Training set results 
 
 from matplotlib.colors import ListedColormap
-X_Set, Y_Set = X_Train, Y_Train
+X_Set, Y_Set = X_train, Y_train
 X1, X2 = np.meshgrid(np.arange(start = X_Set[:,0].min() -1, stop = X_Set[:, 0].max() +1, step = 0.01),
                      np.arange(start = X_Set[:,1].min() -1, stop = X_Set[:, 1].max() +1, step = 0.01))
 

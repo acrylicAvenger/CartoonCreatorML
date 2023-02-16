@@ -52,6 +52,6 @@ for i, j in enumerate(np.unique(Y_Set)):
                 c = ListedColormap(('red', 'green'))(i), label = j)
 plt.title('Logistic Regression ( Training set)')
 plt.xlabel('Age')
-plt.ylabel('Estimated Salary')
+plt.ylabel('Prediction of car purchase')
 plt.legend()
 plt.show()
